@@ -37,6 +37,11 @@
         global 		code  	"C:/Users/jdmichler/git/AIDELabAZ/weather_and_agriculture"
 		global 		data	"G:/My Drive/weather_project"
     }
+	  if `"`c(username)'"' == "Chandrakant Agme" {
+        global 		code  	"C:/Users/Chandrakant Agme/Documents/GitHub/weather_borders"
+		global 		data	"C:/Users/Chandrakant Agme/University of Arizona/Michler, Jeffrey David - (jdmichler) - weather_project"
+    }
+
 
 	
 * **********************************************************************
