@@ -1,7 +1,7 @@
-* Project: WB Weather
-* Created on: May 2020
+* Project: Beyond Borders
+* Created on: October 2023
 * Created by: jdm
-* Stata v.17.0
+* Stata v.18.0
 
 * does
 	* establishes an identical workspace between users
@@ -22,10 +22,10 @@
 * **********************************************************************
 
 * set $pack to 0 to skip package installation
-	global 			pack 	1
+	global 			pack 	0
 		
 * Specify Stata version in use
-    global stataVersion 17.0    // set Stata version
+    global stataVersion 18.0    // set Stata version
     version $stataVersion
 
 * **********************************************************************
@@ -34,8 +34,8 @@
 
 * Define root folder globals
     if `"`c(username)'"' == "jdmichler" {
-        global 		code  	"C:/Users/jdmichler/git/AIDELabAZ/weather_and_agriculture"
-		global 		data	"G:/My Drive/weather_project"
+        global 		code  	"C:/Users/jdmichler/git/AIDELabAZ/weather_borders"
+		global 		data	"C:/Users/jdmichler/OneDrive - University of Arizona/weather_project"
     }
 	  if `"`c(username)'"' == "Chandrakant Agme" {
         global 		code  	"C:/Users/Chandrakant Agme/Documents/GitHub/weather_borders"
@@ -119,14 +119,13 @@ if $pack == 1 {
 /*	this code requires a user to have downloaded the publically available 
 	household data sets and placed them into the folder structure detailed
 	in the readme file accompanying this repo.
-*/	
+	
 	do 			"$code/ethiopia/household_code/eth_hh_masterdo.do"
 	do 			"$code/malawi/household_code/mwi_hh_masterdo.do"
 	do 			"$code/niger/household_code/ngr_hh_masterdo.do"
 	do 			"$code/nigeria/household_code/nga_hh_masterdo.do"
 	do 			"$code/tanzania/household_code/tza_hh_masterdo.do"
 	do 			"$code/uganda/household_code/uga_hh_masterdo.do"
-
 
 
 * **********************************************************************
@@ -156,3 +155,4 @@ if $pack == 1 {
 	do			"$code/analysis/viz_code/coeff_vis.do"
 	do			"$code/analysis/viz_code/coeff_lc_vis.do"
 	do			"$code/analysis/viz_code/coeff_mc_vis.do"
+*/
