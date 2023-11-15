@@ -41,9 +41,13 @@
         global 		code  	"C:/Users/Chandrakant Agme/Documents/GitHub/weather_borders"
 		global 		data	"C:/Users/Chandrakant Agme/University of Arizona/Michler, Jeffrey David - (jdmichler) - weather_project"
     }
-
-
 	
+	  if `"`c(username)'"' == "annal" {
+        global 		code  	"C:/Users/aljosephson/git/weather_borders"
+		global 		data	"C:/Users/aljosephson/OneDrive - University of Arizona/weather_project"
+    }
+
+
 * **********************************************************************
 * 0 (b) - Check if any required packages are installed:
 * **********************************************************************
