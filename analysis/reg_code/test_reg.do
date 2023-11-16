@@ -25,7 +25,7 @@
 
 * open log	
 	cap log close
-	log 	using 		"$logout/test_reg", append
+	*log 	using 		"$logout/test_reg", append
 
 	
 * **********************************************************************
@@ -234,9 +234,19 @@ restore
 	
 	
 	
+				
+* define loop through levels of the data type variable	
+levelsof 	country		, local(levels)
+foreach l of local levels {
+		
+preserve
+
+* keep if niger or nigeria
+	keep		if country == `l'
+
+		xtreg 		lntf_yld v01_rf1_x3, fe vce(cluster hhid)
 	
+		xtreg 		lntf_yld c.v01_rf1_x3#i.aez, fe vce(cluster hhid)
 	
-	
-	
-	
-	
+restore
+}
