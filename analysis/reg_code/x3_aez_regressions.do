@@ -1,7 +1,9 @@
-* Project: WB Weather
+* Project: Beyond Borders
 * Created on: November 2023
-* Created by: chandrakant agme
-* Stata v.16.1
+* Created by: ca
+* Edited by: ca
+* Edited on: 16 November 2023
+* Stata v.18.0
 
 * does
 	* runs regressions using extraction method three
@@ -42,6 +44,7 @@
 * 2 - 
 * **********************************************************************
 
+* regs for sat 1
     reg lntf_yld c.v01_rf1_x3##i.country c.v01_rf1_x3##i.aez, cluster(hhid)
     reg lntf_yld c.v05_rf1_x3##i.country c.v05_rf1_x3##i.aez, cluster(hhid)
     reg lntf_yld c.v08_rf1_x3##i.country c.v08_rf1_x3##i.aez, cluster(hhid)

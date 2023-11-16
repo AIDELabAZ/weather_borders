@@ -25,7 +25,7 @@
 
 * open log	
 	cap log close
-	*log 	using 		"$logout/test_reg", append
+	log 	using 		"$logout/test_reg", append
 
 	
 * **********************************************************************
@@ -38,11 +38,8 @@
 * drop aez with only a few observations
 	drop		if aez ==321
 	
-* drop non-contiguous countries
-	drop		if country == 1
-	
-* drop non-extraction method 3
-	drop		*_x0 *_x1 *_x2 *_x4 *_x5 *_x6 *_x7 *_x8 *_x9
+* drop non-extraction method 1
+	drop		*_x0 *_x2 *_x3 *_x4 *_x5 *_x6 *_x7 *_x8 *_x9
 	
 * drop temperature
 	drop		*tp*
@@ -53,6 +50,8 @@
 * set panel dimensions
 	xtset 		hhid year
 	
+
+/*
 * **********************************************************************
 * 2 - run niger/nigeria regressions
 * **********************************************************************
@@ -231,22 +230,29 @@ preserve
 	reg 		lntf_yld c.v01_rf1_x3#i.aez i.year i.country i.aez, vce(cluster hhid)
 	xtreg 		lntf_yld c.v01_rf1_x3#i.aez i.year i.country i.aez, fe vce(cluster hhid)			
 restore
+*/	
 	
 	
-	
+* **********************************************************************
+* 3 - country and sat regs by aez
+* **********************************************************************	
 				
-* define loop through levels of the data type variable	
+* create local of weather variables
+	loc		weather 	v*
+				
+* define loop through levels of country
 levelsof 	country		, local(levels)
 foreach l of local levels {
+
+	* rainfall			
+		foreach 	v of varlist `weather' { 
+			
+		* reg weather only
+			xtreg 		lntf_yld `v' if country == `l', ///
+							fe vce(cluster hhid)
 		
-preserve
-
-* keep if niger or nigeria
-	keep		if country == `l'
-
-		xtreg 		lntf_yld v01_rf1_x3, fe vce(cluster hhid)
-	
-		xtreg 		lntf_yld c.v01_rf1_x3#i.aez, fe vce(cluster hhid)
-	
-restore
+		* reg weather by aez
+			xtreg 		lntf_yld c.`v'#i.aez if country == `l', ///
+							fe vce(cluster hhid)
+		}
 }
