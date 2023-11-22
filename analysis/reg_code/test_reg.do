@@ -237,25 +237,25 @@ restore
 * 3 - country and sat regs by aez
 * **********************************************************************	
 				
+* create local of weather variables
+	loc		weather 	v*
+				
 * define loop through levels of country
 levelsof 	country		, local(levels)
-foreach l of local levels {
+foreach c of local levels {
 
 	* rainfall			
-		forval		v = 1/6 { 
+		foreach 	v of varlist `weather' { 
 			
 		* reg weather only
-			xtreg 		lntf_yld v01_rf`v'_x1 if country == `l', ///
+			xtreg 		lntf_yld `v' if country == `c', ///
 							fe vce(cluster hhid)
-			eststo 		rf`v'_c`l'
-
+		
 		* reg weather by aez
-			xtreg 		lntf_yld c.v01_rf`v'_x1#i.aez if country == `l', ///
+			xtreg 		lntf_yld c.`v'#i.aez if country == `c', ///
 							fe vce(cluster hhid)
-			eststo 		rf`v'_c`l'_aez
 		}
 }
-
-* ethiopia, sat 1
-	coefplot		 (rf1_c1 rf1_c1_aez, drop(_cons) ///
+coefplot		 (rf1_c1 rf1_c1_aez, drop(_cons) ///
 						xline(0, lcolor(maroon) lstyle(solid)) levels(95))
+						
