@@ -18,6 +18,8 @@
 * 0 - setup
 * **********************************************************************
 
+	clear		all
+
 * define paths
 	global		source	= 	"$data/regression_data"
 	global		results = 	"$data/results_data"
@@ -246,16 +248,53 @@ foreach c of local levels {
 
 	* rainfall			
 		foreach 	v of varlist `weather' { 
-			
+
 		* reg weather only
 			xtreg 		lntf_yld `v' if country == `c', ///
 							fe vce(cluster hhid)
-		
+			eststo 		`v'_c`c'
+		}
+}	
+
+foreach c of local levels {
+
+	* rainfall			
+		foreach 	v of varlist `weather' { 
+
 		* reg weather by aez
 			xtreg 		lntf_yld c.`v'#i.aez if country == `c', ///
 							fe vce(cluster hhid)
+			eststo 		`v'_c`c'_aez
 		}
-}
-coefplot		 (rf1_c1 rf1_c1_aez, drop(_cons) ///
+}	
+
+* ethiopia, sat 1
+	coefplot		 (v01_rf1_x01_c1 v01_rf1_x01_c1_aez, drop(_cons) ///
 						xline(0, lcolor(maroon) lstyle(solid)) levels(95))
+				
+				
+***practice
+* create local of weather variables
+	loc		weather 	v01_rf*
+
+* define loop through levels of country
+levelsof 	country		, local(levels)
+foreach c of local levels {
+
+	* rainfall			
+		foreach 	v of varlist `weather' { 
+			
+		* reg weather only
+			xtreg 		lntf_yld v01_rf`v'_x1 if country == `c', ///
+							fe vce(cluster hhid)
+		
+		* reg weather by aez
+			xtreg 		lntf_yld c.v01_rf`v'_x1#i.aez if country == `c', ///
+							fe vce(cluster hhid)
+			
+			eststo 		rf`v'_c`l'_aez
+		}
+}	
+		
+***practice
 						
