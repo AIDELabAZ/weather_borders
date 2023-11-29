@@ -1933,7 +1933,7 @@ foreach c of local levels {
 						labsize(vsmall)) legend(off) title("Uganda")
 */
 
-/*	
+	
 clear all
 
 * **********************************************************************
@@ -1980,9 +1980,21 @@ foreach c of local levels {
 		}
 }	
 
+foreach c of local levels {
+
+	* rainfall			
+		foreach 	v of varlist `weather' { 
+
+		* reg weather by aez
+			xtreg 		lntf_yld c.`v'#i.aez if country == `c', ///
+							fe vce(cluster hhid)
+			eststo 		`v'_c`c'_aez
+		}
+}	
+
 * ethiopia, sat 1
 	coefplot		 (v14_rf1_x1_c1 v14_rf1_x1_c1_aez, drop(_cons) ///
-						rename(v14_rf1_x1 = "Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf1_x1 = "Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						" TW/A X Rainfall " 312.aez#c.v14_rf1_x1 = ///
 						" TW/SA X Rainfall " 313.aez#c.v14_rf1_x1 = ///
 						" TW/SH X Rainfall " 314.aez#c.v14_rf1_x1 = ///
@@ -1992,7 +2004,7 @@ foreach c of local levels {
 						" TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf2_x1_c1 v14_rf2_x1_c1_aez, drop(_cons) ///
-						rename(v14_rf2_x1 = "Mean " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf2_x1 = "Dry Spell " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall" 312.aez#c.v14_rf2_x1 = ///
 						"TW/SA X Rainfall" 313.aez#c.v14_rf2_x1 = ///
 						"TW/SH X Rainfall" 314.aez#c.v14_rf2_x1 = ///
@@ -2002,7 +2014,7 @@ foreach c of local levels {
 						"TC/H X Rainfall") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf3_x1_c1 v14_rf3_x1_c1_aez, drop(_cons) ///
-						rename(v14_rf3_x1 = " Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf3_x1 = " Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall " 312.aez#c.v14_rf3_x1 = ///
 						"  TW/SA X Rainfall " 313.aez#c.v14_rf3_x1 = ///
 						"  TW/SH X Rainfall " 314.aez#c.v14_rf3_x1 = ///
@@ -2012,7 +2024,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf4_x1_c1 v14_rf4_x1_c1_aez, drop(_cons) ///
-						rename(v14_rf4_x1 = " Mean " 311.aez#c.v14_rf4_x1 = ///
+						rename(v14_rf4_x1 = " Dry Spell " 311.aez#c.v14_rf4_x1 = ///
 						"  TW/A X Rainfall  " 312.aez#c.v14_rf4_x1 = ///
 						"  TW/SA X Rainfall  " 313.aez#c.v14_rf4_x1 = ///
 						"  TW/SH X Rainfall  " 314.aez#c.v14_rf4_x1 = ///
@@ -2022,7 +2034,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall  ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf5_x1_c1 v14_rf5_x1_c1_aez, drop(_cons) ///
-						rename(v14_rf5_x1 = "Mean  " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf5_x1 = "Dry Spell  " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall " 312.aez#c.v14_rf5_x1 = ///
 						"TW/SA X Rainfall " 313.aez#c.v14_rf5_x1 = ///
 						"TW/SH X Rainfall " 314.aez#c.v14_rf5_x1 = ///
@@ -2032,7 +2044,7 @@ foreach c of local levels {
 						"TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf6_x1_c1 v14_rf6_x1_c1_aez, drop(_cons) ///
-						rename(v14_rf6_x1 = "  Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf6_x1 = "  Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall   " 312.aez#c.v14_rf6_x1 = ///
 						"  TW/SA X Rainfall   " 313.aez#c.v14_rf6_x1 = ///
 						"  TW/SH X Rainfall   " 314.aez#c.v14_rf6_x1 = ///
@@ -2043,15 +2055,15 @@ foreach c of local levels {
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
 					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
 						ytitle("Point Estimates and 95% Confidence Intervals") ///
-						groups("Rainfall" = "{bf:CHIRPS}" "Rainfall " ///
-						= "{bf:CPC}" " Rainfall" = "{bf:MERRA-2}" " Rainfall " ///
-						= "{bf:ARC2}" "Rainfall  " = "{bf:ERA-5}" "  Rainfall" ///
+						groups("Dry Spell" = "{bf:CHIRPS}" "Dry Spell " ///
+						= "{bf:CPC}" " Dry Spell" = "{bf:MERRA-2}" " Dry Spell " ///
+						= "{bf:ARC2}" "Dry Spell  " = "{bf:ERA-5}" "  Dry Spell" ///
 						= "{bf:TAMSAT}" ) vertical xlabel( , angle(45) ///
 						labsize(vsmall)) legend(off) title("Ethiopia")
 						
 * malawi , sat 1
 	coefplot		 (v14_rf1_x1_c2 v14_rf1_x1_c2_aez, drop(_cons) ///
-						rename(v14_rf1_x1 = "Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf1_x1 = "Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						" TW/A X Rainfall " 312.aez#c.v14_rf1_x1 = ///
 						" TW/SA X Rainfall " 313.aez#c.v14_rf1_x1 = ///
 						" TW/SH X Rainfall " 314.aez#c.v14_rf1_x1 = ///
@@ -2061,7 +2073,7 @@ foreach c of local levels {
 						" TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf2_x1_c2 v14_rf2_x1_c2_aez, drop(_cons) ///
-						rename(v14_rf2_x1 = "Mean " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf2_x1 = "Dry Spell " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall" 312.aez#c.v14_rf2_x1 = ///
 						"TW/SA X Rainfall" 313.aez#c.v14_rf2_x1 = ///
 						"TW/SH X Rainfall" 314.aez#c.v14_rf2_x1 = ///
@@ -2071,7 +2083,7 @@ foreach c of local levels {
 						"TC/H X Rainfall") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf3_x1_c2 v14_rf3_x1_c2_aez, drop(_cons) ///
-						rename(v14_rf3_x1 = " Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf3_x1 = " Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall " 312.aez#c.v14_rf3_x1 = ///
 						"  TW/SA X Rainfall " 313.aez#c.v14_rf3_x1 = ///
 						"  TW/SH X Rainfall " 314.aez#c.v14_rf3_x1 = ///
@@ -2081,7 +2093,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf4_x1_c2 v14_rf4_x1_c2_aez, drop(_cons) ///
-						rename(v14_rf4_x1 = " Mean " 311.aez#c.v14_rf4_x1 = ///
+						rename(v14_rf4_x1 = " Dry Spell " 311.aez#c.v14_rf4_x1 = ///
 						"  TW/A X Rainfall  " 312.aez#c.v14_rf4_x1 = ///
 						"  TW/SA X Rainfall  " 313.aez#c.v14_rf4_x1 = ///
 						"  TW/SH X Rainfall  " 314.aez#c.v14_rf4_x1 = ///
@@ -2091,7 +2103,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall  ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf5_x1_c2 v14_rf5_x1_c2_aez, drop(_cons) ///
-						rename(v14_rf5_x1 = "Mean  " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf5_x1 = "Dry Spell  " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall " 312.aez#c.v14_rf5_x1 = ///
 						"TW/SA X Rainfall " 313.aez#c.v14_rf5_x1 = ///
 						"TW/SH X Rainfall " 314.aez#c.v14_rf5_x1 = ///
@@ -2101,7 +2113,7 @@ foreach c of local levels {
 						"TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf6_x1_c2 v14_rf6_x1_c2_aez, drop(_cons) ///
-						rename(v14_rf6_x1 = "  Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf6_x1 = "  Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall   " 312.aez#c.v14_rf6_x1 = ///
 						"  TW/SA X Rainfall   " 313.aez#c.v14_rf6_x1 = ///
 						"  TW/SH X Rainfall   " 314.aez#c.v14_rf6_x1 = ///
@@ -2112,15 +2124,15 @@ foreach c of local levels {
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
 					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
 						ytitle("Point Estimates and 95% Confidence Intervals") ///
-						groups("Rainfall" = "{bf:CHIRPS}" "Rainfall " ///
-						= "{bf:CPC}" " Rainfall" = "{bf:MERRA-2}" " Rainfall " ///
-						= "{bf:ARC2}" "Rainfall  " = "{bf:ERA-5}" "  Rainfall" ///
+						groups("Dry Spell" = "{bf:CHIRPS}" "Dry Spell " ///
+						= "{bf:CPC}" " Dry Spell" = "{bf:MERRA-2}" " Dry Spell " ///
+						= "{bf:ARC2}" "Dry Spell  " = "{bf:ERA-5}" "  Dry Spell" ///
 						= "{bf:TAMSAT}" ) vertical xlabel( , angle(45) ///
 						labsize(vsmall)) legend(off) title("Malawi")
 					
 * niger , sat 1
 	coefplot		 (v14_rf1_x1_c4 v14_rf1_x1_c4_aez, drop(_cons) ///
-						rename(v14_rf1_x1 = "Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf1_x1 = "Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						" TW/A X Rainfall " 312.aez#c.v14_rf1_x1 = ///
 						" TW/SA X Rainfall " 313.aez#c.v14_rf1_x1 = ///
 						" TW/SH X Rainfall " 314.aez#c.v14_rf1_x1 = ///
@@ -2130,7 +2142,7 @@ foreach c of local levels {
 						" TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf2_x1_c4 v14_rf2_x1_c4_aez, drop(_cons) ///
-						rename(v14_rf2_x1 = "Mean " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf2_x1 = "Dry Spell " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall" 312.aez#c.v14_rf2_x1 = ///
 						"TW/SA X Rainfall" 313.aez#c.v14_rf2_x1 = ///
 						"TW/SH X Rainfall" 314.aez#c.v14_rf2_x1 = ///
@@ -2140,7 +2152,7 @@ foreach c of local levels {
 						"TC/H X Rainfall") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf3_x1_c4 v14_rf3_x1_c4_aez, drop(_cons) ///
-						rename(v14_rf3_x1 = " Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf3_x1 = " Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall " 312.aez#c.v14_rf3_x1 = ///
 						"  TW/SA X Rainfall " 313.aez#c.v14_rf3_x1 = ///
 						"  TW/SH X Rainfall " 314.aez#c.v14_rf3_x1 = ///
@@ -2150,7 +2162,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf4_x1_c4 v14_rf4_x1_c4_aez, drop(_cons) ///
-						rename(v14_rf4_x1 = " Mean " 311.aez#c.v14_rf4_x1 = ///
+						rename(v14_rf4_x1 = " Dry Spell " 311.aez#c.v14_rf4_x1 = ///
 						"  TW/A X Rainfall  " 312.aez#c.v14_rf4_x1 = ///
 						"  TW/SA X Rainfall  " 313.aez#c.v14_rf4_x1 = ///
 						"  TW/SH X Rainfall  " 314.aez#c.v14_rf4_x1 = ///
@@ -2160,7 +2172,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall  ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf5_x1_c4 v14_rf5_x1_c4_aez, drop(_cons) ///
-						rename(v14_rf5_x1 = "Mean  " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf5_x1 = "Dry Spell  " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall " 312.aez#c.v14_rf5_x1 = ///
 						"TW/SA X Rainfall " 313.aez#c.v14_rf5_x1 = ///
 						"TW/SH X Rainfall " 314.aez#c.v14_rf5_x1 = ///
@@ -2170,7 +2182,7 @@ foreach c of local levels {
 						"TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf6_x1_c4 v14_rf6_x1_c4_aez, drop(_cons) ///
-						rename(v14_rf6_x1 = "  Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf6_x1 = "  Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall   " 312.aez#c.v14_rf6_x1 = ///
 						"  TW/SA X Rainfall   " 313.aez#c.v14_rf6_x1 = ///
 						"  TW/SH X Rainfall   " 314.aez#c.v14_rf6_x1 = ///
@@ -2181,16 +2193,16 @@ foreach c of local levels {
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
 					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
 						ytitle("Point Estimates and 95% Confidence Intervals") ///
-						groups("Rainfall" = "{bf:CHIRPS}" "Rainfall " ///
-						= "{bf:CPC}" " Rainfall" = "{bf:MERRA-2}" " Rainfall " ///
-						= "{bf:ARC2}" "Rainfall  " = "{bf:ERA-5}" "  Rainfall" ///
+						groups("Dry Spell" = "{bf:CHIRPS}" "Dry Spell " ///
+						= "{bf:CPC}" " Dry Spell" = "{bf:MERRA-2}" " Dry Spell " ///
+						= "{bf:ARC2}" "Dry Spell  " = "{bf:ERA-5}" "  Dry Spell" ///
 						= "{bf:TAMSAT}" ) vertical xlabel( , angle(45) ///
 						labsize(vsmall)) legend(off) title("Niger")
 						
 					
 * nigeria , sat 1
 	coefplot		 (v14_rf1_x1_c5 v14_rf1_x1_c5_aez, drop(_cons) ///
-						rename(v14_rf1_x1 = "Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf1_x1 = "Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						" TW/A X Rainfall " 312.aez#c.v14_rf1_x1 = ///
 						" TW/SA X Rainfall " 313.aez#c.v14_rf1_x1 = ///
 						" TW/SH X Rainfall " 314.aez#c.v14_rf1_x1 = ///
@@ -2200,7 +2212,7 @@ foreach c of local levels {
 						" TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf2_x1_c5 v14_rf2_x1_c5_aez, drop(_cons) ///
-						rename(v14_rf2_x1 = "Mean " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf2_x1 = "Dry Spell " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall" 312.aez#c.v14_rf2_x1 = ///
 						"TW/SA X Rainfall" 313.aez#c.v14_rf2_x1 = ///
 						"TW/SH X Rainfall" 314.aez#c.v14_rf2_x1 = ///
@@ -2210,7 +2222,7 @@ foreach c of local levels {
 						"TC/H X Rainfall") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf3_x1_c5 v14_rf3_x1_c5_aez, drop(_cons) ///
-						rename(v14_rf3_x1 = " Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf3_x1 = " Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall " 312.aez#c.v14_rf3_x1 = ///
 						"  TW/SA X Rainfall " 313.aez#c.v14_rf3_x1 = ///
 						"  TW/SH X Rainfall " 314.aez#c.v14_rf3_x1 = ///
@@ -2220,7 +2232,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf4_x1_c5 v14_rf4_x1_c5_aez, drop(_cons) ///
-						rename(v14_rf4_x1 = " Mean " 311.aez#c.v14_rf4_x1 = ///
+						rename(v14_rf4_x1 = " Dry Spell " 311.aez#c.v14_rf4_x1 = ///
 						"  TW/A X Rainfall  " 312.aez#c.v14_rf4_x1 = ///
 						"  TW/SA X Rainfall  " 313.aez#c.v14_rf4_x1 = ///
 						"  TW/SH X Rainfall  " 314.aez#c.v14_rf4_x1 = ///
@@ -2230,7 +2242,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall  ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf5_x1_c5 v14_rf5_x1_c5_aez, drop(_cons) ///
-						rename(v14_rf5_x1 = "Mean  " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf5_x1 = "Dry Spell  " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall " 312.aez#c.v14_rf5_x1 = ///
 						"TW/SA X Rainfall " 313.aez#c.v14_rf5_x1 = ///
 						"TW/SH X Rainfall " 314.aez#c.v14_rf5_x1 = ///
@@ -2240,7 +2252,7 @@ foreach c of local levels {
 						"TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf6_x1_c5 v14_rf6_x1_c5_aez, drop(_cons) ///
-						rename(v14_rf6_x1 = "  Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf6_x1 = "  Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall   " 312.aez#c.v14_rf6_x1 = ///
 						"  TW/SA X Rainfall   " 313.aez#c.v14_rf6_x1 = ///
 						"  TW/SH X Rainfall   " 314.aez#c.v14_rf6_x1 = ///
@@ -2251,16 +2263,16 @@ foreach c of local levels {
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
 					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
 						ytitle("Point Estimates and 95% Confidence Intervals") ///
-						groups("Rainfall" = "{bf:CHIRPS}" "Rainfall " ///
-						= "{bf:CPC}" " Rainfall" = "{bf:MERRA-2}" " Rainfall " ///
-						= "{bf:ARC2}" "Rainfall  " = "{bf:ERA-5}" "  Rainfall" ///
+						groups("Dry Spell" = "{bf:CHIRPS}" "Dry Spell " ///
+						= "{bf:CPC}" " Dry Spell" = "{bf:MERRA-2}" " Dry Spell " ///
+						= "{bf:ARC2}" "Dry Spell  " = "{bf:ERA-5}" "  Dry Spell" ///
 						= "{bf:TAMSAT}" ) vertical xlabel( , angle(45) ///
 						labsize(vsmall)) legend(off) title("Nigeria")
 						
 						
 * tanzania , sat 1
 	coefplot		 (v14_rf1_x1_c6 v14_rf1_x1_c6_aez, drop(_cons) ///
-						rename(v14_rf1_x1 = "Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf1_x1 = "Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						" TW/A X Rainfall " 312.aez#c.v14_rf1_x1 = ///
 						" TW/SA X Rainfall " 313.aez#c.v14_rf1_x1 = ///
 						" TW/SH X Rainfall " 314.aez#c.v14_rf1_x1 = ///
@@ -2270,7 +2282,7 @@ foreach c of local levels {
 						" TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf2_x1_c6 v14_rf2_x1_c6_aez, drop(_cons) ///
-						rename(v14_rf2_x1 = "Mean " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf2_x1 = "Dry Spell " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall" 312.aez#c.v14_rf2_x1 = ///
 						"TW/SA X Rainfall" 313.aez#c.v14_rf2_x1 = ///
 						"TW/SH X Rainfall" 314.aez#c.v14_rf2_x1 = ///
@@ -2280,7 +2292,7 @@ foreach c of local levels {
 						"TC/H X Rainfall") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf3_x1_c6 v14_rf3_x1_c6_aez, drop(_cons) ///
-						rename(v14_rf3_x1 = " Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf3_x1 = " Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall " 312.aez#c.v14_rf3_x1 = ///
 						"  TW/SA X Rainfall " 313.aez#c.v14_rf3_x1 = ///
 						"  TW/SH X Rainfall " 314.aez#c.v14_rf3_x1 = ///
@@ -2290,7 +2302,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf4_x1_c6 v14_rf4_x1_c6_aez, drop(_cons) ///
-						rename(v14_rf4_x1 = " Mean " 311.aez#c.v14_rf4_x1 = ///
+						rename(v14_rf4_x1 = " Dry Spell " 311.aez#c.v14_rf4_x1 = ///
 						"  TW/A X Rainfall  " 312.aez#c.v14_rf4_x1 = ///
 						"  TW/SA X Rainfall  " 313.aez#c.v14_rf4_x1 = ///
 						"  TW/SH X Rainfall  " 314.aez#c.v14_rf4_x1 = ///
@@ -2300,7 +2312,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall  ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf5_x1_c6 v14_rf5_x1_c6_aez, drop(_cons) ///
-						rename(v14_rf5_x1 = "Mean  " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf5_x1 = "Dry Spell  " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall " 312.aez#c.v14_rf5_x1 = ///
 						"TW/SA X Rainfall " 313.aez#c.v14_rf5_x1 = ///
 						"TW/SH X Rainfall " 314.aez#c.v14_rf5_x1 = ///
@@ -2310,7 +2322,7 @@ foreach c of local levels {
 						"TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf6_x1_c6 v14_rf6_x1_c6_aez, drop(_cons) ///
-						rename(v14_rf6_x1 = "  Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf6_x1 = "  Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall   " 312.aez#c.v14_rf6_x1 = ///
 						"  TW/SA X Rainfall   " 313.aez#c.v14_rf6_x1 = ///
 						"  TW/SH X Rainfall   " 314.aez#c.v14_rf6_x1 = ///
@@ -2321,15 +2333,15 @@ foreach c of local levels {
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
 					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
 						ytitle("Point Estimates and 95% Confidence Intervals") ///
-						groups("Rainfall" = "{bf:CHIRPS}" "Rainfall " ///
-						= "{bf:CPC}" " Rainfall" = "{bf:MERRA-2}" " Rainfall " ///
-						= "{bf:ARC2}" "Rainfall  " = "{bf:ERA-5}" "  Rainfall" ///
+						groups("Dry Spell" = "{bf:CHIRPS}" "Dry Spell " ///
+						= "{bf:CPC}" " Dry Spell" = "{bf:MERRA-2}" " Dry Spell " ///
+						= "{bf:ARC2}" "Dry Spell  " = "{bf:ERA-5}" "  Dry Spell" ///
 						= "{bf:TAMSAT}" ) vertical xlabel( , angle(45) ///
 						labsize(vsmall)) legend(off) title("Tanzania")
 						
 * uganda , sat 1
 	coefplot		 (v14_rf1_x1_c7 v14_rf1_x1_c7_aez, drop(_cons) ///
-						rename(v14_rf1_x1 = "Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf1_x1 = "Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						" TW/A X Rainfall " 312.aez#c.v14_rf1_x1 = ///
 						" TW/SA X Rainfall " 313.aez#c.v14_rf1_x1 = ///
 						" TW/SH X Rainfall " 314.aez#c.v14_rf1_x1 = ///
@@ -2339,7 +2351,7 @@ foreach c of local levels {
 						" TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf2_x1_c7 v14_rf2_x1_c7_aez, drop(_cons) ///
-						rename(v14_rf2_x1 = "Mean " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf2_x1 = "Dry Spell " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall" 312.aez#c.v14_rf2_x1 = ///
 						"TW/SA X Rainfall" 313.aez#c.v14_rf2_x1 = ///
 						"TW/SH X Rainfall" 314.aez#c.v14_rf2_x1 = ///
@@ -2349,7 +2361,7 @@ foreach c of local levels {
 						"TC/H X Rainfall") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf3_x1_c7 v14_rf3_x1_c7_aez, drop(_cons) ///
-						rename(v14_rf3_x1 = " Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf3_x1 = " Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall " 312.aez#c.v14_rf3_x1 = ///
 						"  TW/SA X Rainfall " 313.aez#c.v14_rf3_x1 = ///
 						"  TW/SH X Rainfall " 314.aez#c.v14_rf3_x1 = ///
@@ -2359,7 +2371,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf4_x1_c7 v14_rf4_x1_c7_aez, drop(_cons) ///
-						rename(v14_rf4_x1 = " Mean " 311.aez#c.v14_rf4_x1 = ///
+						rename(v14_rf4_x1 = " Dry Spell " 311.aez#c.v14_rf4_x1 = ///
 						"  TW/A X Rainfall  " 312.aez#c.v14_rf4_x1 = ///
 						"  TW/SA X Rainfall  " 313.aez#c.v14_rf4_x1 = ///
 						"  TW/SH X Rainfall  " 314.aez#c.v14_rf4_x1 = ///
@@ -2369,7 +2381,7 @@ foreach c of local levels {
 						"  TC/H X Rainfall  ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf5_x1_c7 v14_rf5_x1_c7_aez, drop(_cons) ///
-						rename(v14_rf5_x1 = "Mean  " 311.aez#c.v14_rf2_x1 = ///
+						rename(v14_rf5_x1 = "Dry Spell  " 311.aez#c.v14_rf2_x1 = ///
 						"TW/A X Rainfall " 312.aez#c.v14_rf5_x1 = ///
 						"TW/SA X Rainfall " 313.aez#c.v14_rf5_x1 = ///
 						"TW/SH X Rainfall " 314.aez#c.v14_rf5_x1 = ///
@@ -2379,7 +2391,7 @@ foreach c of local levels {
 						"TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v14_rf6_x1_c7 v14_rf6_x1_c7_aez, drop(_cons) ///
-						rename(v14_rf6_x1 = "  Mean" 311.aez#c.v14_rf1_x1 = ///
+						rename(v14_rf6_x1 = "  Dry Spell" 311.aez#c.v14_rf1_x1 = ///
 						"  TW/A X Rainfall   " 312.aez#c.v14_rf6_x1 = ///
 						"  TW/SA X Rainfall   " 313.aez#c.v14_rf6_x1 = ///
 						"  TW/SH X Rainfall   " 314.aez#c.v14_rf6_x1 = ///
@@ -2390,9 +2402,9 @@ foreach c of local levels {
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
 					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
 						ytitle("Point Estimates and 95% Confidence Intervals") ///
-						groups("Rainfall" = "{bf:CHIRPS}" "Rainfall " ///
-						= "{bf:CPC}" " Rainfall" = "{bf:MERRA-2}" " Rainfall " ///
-						= "{bf:ARC2}" "Rainfall  " = "{bf:ERA-5}" "  Rainfall" ///
+						groups("Dry Spell" = "{bf:CHIRPS}" "Dry Spell " ///
+						= "{bf:CPC}" " Dry Spell" = "{bf:MERRA-2}" " Dry Spell " ///
+						= "{bf:ARC2}" "Dry Spell  " = "{bf:ERA-5}" "  Dry Spell" ///
 						= "{bf:TAMSAT}" ) vertical xlabel( , angle(45) ///
 						labsize(vsmall)) legend(off) title("Uganda")
 */
