@@ -1,5 +1,5 @@
 * Project: Beyond Borders
-* Created on: 15 November 2023
+* Created on: 28 November 2023
 * Created by: jdm
 * Stata v.18.0
 
@@ -88,24 +88,272 @@ foreach c of local levels {
 
 * ethiopia, sat 1
 	coefplot		 (v01_rf1_x1_c1 v01_rf1_x1_c1_aez, drop(_cons) ///
-						rename(v01_rf1_x1 = "Rainfall" 312.aez#c.v01_rf1_x1 = ///
-						"Tropic-warm/semiarid X Rainfall" 322.aez#c.v01_rf1_x1 = ///
-						"Tropic-cool/semiarid") msymbol(D) ///
+						rename(v01_rf1_x1 = "Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						" TW/A X Rainfall " 312.aez#c.v01_rf1_x1 = ///
+						" TW/SA X Rainfall " 313.aez#c.v01_rf1_x1 = ///
+						" TW/SH X Rainfall " 314.aez#c.v01_rf1_x1 = ///
+						" TW/H X Rainfall " 322.aez#c.v01_rf1_x1 = ///
+						" TC/SA X Rainfall " 323.aez#c.v01_rf1_x1 = ///
+						" TC/SH X Rainfall " 324.aez#c.v01_rf1_x1 = ///
+						" TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v01_rf2_x1_c1 v01_rf2_x1_c1_aez, drop(_cons) ///
-						rename(v01_rf2_x1 = "Rainfall ") msymbol(D) ///
+						rename(v01_rf2_x1 = "Rainfall " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall" 312.aez#c.v01_rf2_x1 = ///
+						"TW/SA X Rainfall" 313.aez#c.v01_rf2_x1 = ///
+						"TW/SH X Rainfall" 314.aez#c.v01_rf2_x1 = ///
+						"TW/H X Rainfall" 322.aez#c.v01_rf2_x1 = ///
+						"TC/SA X Rainfall" 323.aez#c.v01_rf2_x1 = ///
+						"TC/SH X Rainfall" 324.aez#c.v01_rf2_x1 = ///
+						"TC/H X Rainfall") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v01_rf3_x1_c1 v01_rf3_x1_c1_aez, drop(_cons) ///
-						rename(v01_rf3_x1 = " Rainfall") msymbol(D) ///
+						rename(v01_rf3_x1 = " Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall " 312.aez#c.v01_rf3_x1 = ///
+						"  TW/SA X Rainfall " 313.aez#c.v01_rf3_x1 = ///
+						"  TW/SH X Rainfall " 314.aez#c.v01_rf3_x1 = ///
+						"  TW/H X Rainfall " 322.aez#c.v01_rf3_x1 = ///
+						"  TC/SA X Rainfall " 323.aez#c.v01_rf3_x1 = ///
+						"  TC/SH X Rainfall " 324.aez#c.v01_rf3_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v01_rf4_x1_c1 v01_rf4_x1_c1_aez, drop(_cons) ///
-						rename(v01_rf4_x1 = " Rainfall ") msymbol(D) ///
+						rename(v01_rf4_x1 = " Rainfall " 311.aez#c.v01_rf4_x1 = ///
+						"  TW/A X Rainfall  " 312.aez#c.v01_rf4_x1 = ///
+						"  TW/SA X Rainfall  " 313.aez#c.v01_rf4_x1 = ///
+						"  TW/SH X Rainfall  " 314.aez#c.v01_rf4_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf4_x1 = ///
+						"  TC/SA X Rainfall  " 323.aez#c.v01_rf4_x1 = ///
+						"  TC/SH X Rainfall  " 324.aez#c.v01_rf4_x1 = ///
+						"  TC/H X Rainfall  ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v01_rf5_x1_c1 v01_rf5_x1_c1_aez, drop(_cons) ///
-						rename(v01_rf5_x1 = "Rainfall  ") msymbol(D) ///
+						rename(v01_rf5_x1 = "Rainfall  " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall " 312.aez#c.v01_rf5_x1 = ///
+						"TW/SA X Rainfall " 313.aez#c.v01_rf5_x1 = ///
+						"TW/SH X Rainfall " 314.aez#c.v01_rf5_x1 = ///
+						"TW/H X Rainfall " 322.aez#c.v01_rf5_x1 = ///
+						"TC/SA X Rainfall " 323.aez#c.v01_rf5_x1 = ///
+						"TC/SH X Rainfall " 324.aez#c.v01_rf5_x1 = ///
+						"TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
 					 (v01_rf6_x1_c1 v01_rf6_x1_c1_aez, drop(_cons) ///
-						rename(v01_rf6_x1 = "  Rainfall") msymbol(D) ///
+						rename(v01_rf6_x1 = "  Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall   " 312.aez#c.v01_rf6_x1 = ///
+						"  TW/SA X Rainfall   " 313.aez#c.v01_rf6_x1 = ///
+						"  TW/SH X Rainfall   " 314.aez#c.v01_rf6_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf6_x1 = ///
+						"  TC/SA X Rainfall   " 323.aez#c.v01_rf6_x1 = ///
+						"  TC/SH X Rainfall   " 324.aez#c.v01_rf6_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
+					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
+						ytitle("Point Estimates and 95% Confidence Intervals") ///
+						groups("Rainfall" = "{bf:CHIRPS}" "Rainfall " ///
+						= "{bf:CPC}" " Rainfall" = "{bf:MERRA-2}" " Rainfall " ///
+						= "{bf:ARC2}" "Rainfall  " = "{bf:ERA-5}" "  Rainfall" ///
+						= "{bf:TAMSAT}" ) vertical xlabel( , angle(45) ///
+						labsize(vsmall)) legend(off) 
+						
+* malawi , sat 1
+	coefplot		 (v01_rf1_x1_c2 v01_rf1_x1_c2_aez, drop(_cons) ///
+						rename(v01_rf1_x1 = "Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						" TW/A X Rainfall " 312.aez#c.v01_rf1_x1 = ///
+						" TW/SA X Rainfall " 313.aez#c.v01_rf1_x1 = ///
+						" TW/SH X Rainfall " 314.aez#c.v01_rf1_x1 = ///
+						" TW/H X Rainfall " 322.aez#c.v01_rf1_x1 = ///
+						" TC/SA X Rainfall " 323.aez#c.v01_rf1_x1 = ///
+						" TC/SH X Rainfall " 324.aez#c.v01_rf1_x1 = ///
+						" TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf2_x1_c2 v01_rf2_x1_c2_aez, drop(_cons) ///
+						rename(v01_rf2_x1 = "Rainfall " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall" 312.aez#c.v01_rf2_x1 = ///
+						"TW/SA X Rainfall" 313.aez#c.v01_rf2_x1 = ///
+						"TW/SH X Rainfall" 314.aez#c.v01_rf2_x1 = ///
+						"TW/H X Rainfall" 322.aez#c.v01_rf2_x1 = ///
+						"TC/SA X Rainfall" 323.aez#c.v01_rf2_x1 = ///
+						"TC/SH X Rainfall" 324.aez#c.v01_rf2_x1 = ///
+						"TC/H X Rainfall") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf3_x1_c2 v01_rf3_x1_c2_aez, drop(_cons) ///
+						rename(v01_rf3_x1 = " Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall " 312.aez#c.v01_rf3_x1 = ///
+						"  TW/SA X Rainfall " 313.aez#c.v01_rf3_x1 = ///
+						"  TW/SH X Rainfall " 314.aez#c.v01_rf3_x1 = ///
+						"  TW/H X Rainfall " 322.aez#c.v01_rf3_x1 = ///
+						"  TC/SA X Rainfall " 323.aez#c.v01_rf3_x1 = ///
+						"  TC/SH X Rainfall " 324.aez#c.v01_rf3_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf4_x1_c2 v01_rf4_x1_c2_aez, drop(_cons) ///
+						rename(v01_rf4_x1 = " Rainfall " 311.aez#c.v01_rf4_x1 = ///
+						"  TW/A X Rainfall  " 312.aez#c.v01_rf4_x1 = ///
+						"  TW/SA X Rainfall  " 313.aez#c.v01_rf4_x1 = ///
+						"  TW/SH X Rainfall  " 314.aez#c.v01_rf4_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf4_x1 = ///
+						"  TC/SA X Rainfall  " 323.aez#c.v01_rf4_x1 = ///
+						"  TC/SH X Rainfall  " 324.aez#c.v01_rf4_x1 = ///
+						"  TC/H X Rainfall  ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf5_x1_c2 v01_rf5_x1_c2_aez, drop(_cons) ///
+						rename(v01_rf5_x1 = "Rainfall  " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall " 312.aez#c.v01_rf5_x1 = ///
+						"TW/SA X Rainfall " 313.aez#c.v01_rf5_x1 = ///
+						"TW/SH X Rainfall " 314.aez#c.v01_rf5_x1 = ///
+						"TW/H X Rainfall " 322.aez#c.v01_rf5_x1 = ///
+						"TC/SA X Rainfall " 323.aez#c.v01_rf5_x1 = ///
+						"TC/SH X Rainfall " 324.aez#c.v01_rf5_x1 = ///
+						"TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf6_x1_c2 v01_rf6_x1_c2_aez, drop(_cons) ///
+						rename(v01_rf6_x1 = "  Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall   " 312.aez#c.v01_rf6_x1 = ///
+						"  TW/SA X Rainfall   " 313.aez#c.v01_rf6_x1 = ///
+						"  TW/SH X Rainfall   " 314.aez#c.v01_rf6_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf6_x1 = ///
+						"  TC/SA X Rainfall   " 323.aez#c.v01_rf6_x1 = ///
+						"  TC/SH X Rainfall   " 324.aez#c.v01_rf6_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
+					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
+						ytitle("Point Estimates and 95% Confidence Intervals") ///
+						groups("Rainfall" = "{bf:CHIRPS}" "Rainfall " ///
+						= "{bf:CPC}" " Rainfall" = "{bf:MERRA-2}" " Rainfall " ///
+						= "{bf:ARC2}" "Rainfall  " = "{bf:ERA-5}" "  Rainfall" ///
+						= "{bf:TAMSAT}" ) vertical xlabel( , angle(45) ///
+						labsize(vsmall)) legend(off) 
+					
+* niger , sat 1
+	coefplot		 (v01_rf1_x1_c4 v01_rf1_x1_c4_aez, drop(_cons) ///
+						rename(v01_rf1_x1 = "Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						" TW/A X Rainfall " 312.aez#c.v01_rf1_x1 = ///
+						" TW/SA X Rainfall " 313.aez#c.v01_rf1_x1 = ///
+						" TW/SH X Rainfall " 314.aez#c.v01_rf1_x1 = ///
+						" TW/H X Rainfall " 322.aez#c.v01_rf1_x1 = ///
+						" TC/SA X Rainfall " 323.aez#c.v01_rf1_x1 = ///
+						" TC/SH X Rainfall " 324.aez#c.v01_rf1_x1 = ///
+						" TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf2_x1_c4 v01_rf2_x1_c4_aez, drop(_cons) ///
+						rename(v01_rf2_x1 = "Rainfall " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall" 312.aez#c.v01_rf2_x1 = ///
+						"TW/SA X Rainfall" 313.aez#c.v01_rf2_x1 = ///
+						"TW/SH X Rainfall" 314.aez#c.v01_rf2_x1 = ///
+						"TW/H X Rainfall" 322.aez#c.v01_rf2_x1 = ///
+						"TC/SA X Rainfall" 323.aez#c.v01_rf2_x1 = ///
+						"TC/SH X Rainfall" 324.aez#c.v01_rf2_x1 = ///
+						"TC/H X Rainfall") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf3_x1_c4 v01_rf3_x1_c4_aez, drop(_cons) ///
+						rename(v01_rf3_x1 = " Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall " 312.aez#c.v01_rf3_x1 = ///
+						"  TW/SA X Rainfall " 313.aez#c.v01_rf3_x1 = ///
+						"  TW/SH X Rainfall " 314.aez#c.v01_rf3_x1 = ///
+						"  TW/H X Rainfall " 322.aez#c.v01_rf3_x1 = ///
+						"  TC/SA X Rainfall " 323.aez#c.v01_rf3_x1 = ///
+						"  TC/SH X Rainfall " 324.aez#c.v01_rf3_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf4_x1_c4 v01_rf4_x1_c4_aez, drop(_cons) ///
+						rename(v01_rf4_x1 = " Rainfall " 311.aez#c.v01_rf4_x1 = ///
+						"  TW/A X Rainfall  " 312.aez#c.v01_rf4_x1 = ///
+						"  TW/SA X Rainfall  " 313.aez#c.v01_rf4_x1 = ///
+						"  TW/SH X Rainfall  " 314.aez#c.v01_rf4_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf4_x1 = ///
+						"  TC/SA X Rainfall  " 323.aez#c.v01_rf4_x1 = ///
+						"  TC/SH X Rainfall  " 324.aez#c.v01_rf4_x1 = ///
+						"  TC/H X Rainfall  ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf5_x1_c4 v01_rf5_x1_c4_aez, drop(_cons) ///
+						rename(v01_rf5_x1 = "Rainfall  " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall " 312.aez#c.v01_rf5_x1 = ///
+						"TW/SA X Rainfall " 313.aez#c.v01_rf5_x1 = ///
+						"TW/SH X Rainfall " 314.aez#c.v01_rf5_x1 = ///
+						"TW/H X Rainfall " 322.aez#c.v01_rf5_x1 = ///
+						"TC/SA X Rainfall " 323.aez#c.v01_rf5_x1 = ///
+						"TC/SH X Rainfall " 324.aez#c.v01_rf5_x1 = ///
+						"TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf6_x1_c4 v01_rf6_x1_c4_aez, drop(_cons) ///
+						rename(v01_rf6_x1 = "  Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall   " 312.aez#c.v01_rf6_x1 = ///
+						"  TW/SA X Rainfall   " 313.aez#c.v01_rf6_x1 = ///
+						"  TW/SH X Rainfall   " 314.aez#c.v01_rf6_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf6_x1 = ///
+						"  TC/SA X Rainfall   " 323.aez#c.v01_rf6_x1 = ///
+						"  TC/SH X Rainfall   " 324.aez#c.v01_rf6_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
+					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
+						ytitle("Point Estimates and 95% Confidence Intervals") ///
+						groups("Rainfall" = "{bf:CHIRPS}" "Rainfall " ///
+						= "{bf:CPC}" " Rainfall" = "{bf:MERRA-2}" " Rainfall " ///
+						= "{bf:ARC2}" "Rainfall  " = "{bf:ERA-5}" "  Rainfall" ///
+						= "{bf:TAMSAT}" ) vertical xlabel( , angle(45) ///
+						labsize(vsmall)) legend(off) 
+						
+					
+* nigeria , sat 1
+	coefplot		 (v01_rf1_x1_c5 v01_rf1_x1_c5_aez, drop(_cons) ///
+						rename(v01_rf1_x1 = "Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						" TW/A X Rainfall " 312.aez#c.v01_rf1_x1 = ///
+						" TW/SA X Rainfall " 313.aez#c.v01_rf1_x1 = ///
+						" TW/SH X Rainfall " 314.aez#c.v01_rf1_x1 = ///
+						" TW/H X Rainfall " 322.aez#c.v01_rf1_x1 = ///
+						" TC/SA X Rainfall " 323.aez#c.v01_rf1_x1 = ///
+						" TC/SH X Rainfall " 324.aez#c.v01_rf1_x1 = ///
+						" TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf2_x1_c5 v01_rf2_x1_c5_aez, drop(_cons) ///
+						rename(v01_rf2_x1 = "Rainfall " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall" 312.aez#c.v01_rf2_x1 = ///
+						"TW/SA X Rainfall" 313.aez#c.v01_rf2_x1 = ///
+						"TW/SH X Rainfall" 314.aez#c.v01_rf2_x1 = ///
+						"TW/H X Rainfall" 322.aez#c.v01_rf2_x1 = ///
+						"TC/SA X Rainfall" 323.aez#c.v01_rf2_x1 = ///
+						"TC/SH X Rainfall" 324.aez#c.v01_rf2_x1 = ///
+						"TC/H X Rainfall") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf3_x1_c5 v01_rf3_x1_c5_aez, drop(_cons) ///
+						rename(v01_rf3_x1 = " Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall " 312.aez#c.v01_rf3_x1 = ///
+						"  TW/SA X Rainfall " 313.aez#c.v01_rf3_x1 = ///
+						"  TW/SH X Rainfall " 314.aez#c.v01_rf3_x1 = ///
+						"  TW/H X Rainfall " 322.aez#c.v01_rf3_x1 = ///
+						"  TC/SA X Rainfall " 323.aez#c.v01_rf3_x1 = ///
+						"  TC/SH X Rainfall " 324.aez#c.v01_rf3_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf4_x1_c5 v01_rf4_x1_c5_aez, drop(_cons) ///
+						rename(v01_rf4_x1 = " Rainfall " 311.aez#c.v01_rf4_x1 = ///
+						"  TW/A X Rainfall  " 312.aez#c.v01_rf4_x1 = ///
+						"  TW/SA X Rainfall  " 313.aez#c.v01_rf4_x1 = ///
+						"  TW/SH X Rainfall  " 314.aez#c.v01_rf4_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf4_x1 = ///
+						"  TC/SA X Rainfall  " 323.aez#c.v01_rf4_x1 = ///
+						"  TC/SH X Rainfall  " 324.aez#c.v01_rf4_x1 = ///
+						"  TC/H X Rainfall  ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf5_x1_c5 v01_rf5_x1_c5_aez, drop(_cons) ///
+						rename(v01_rf5_x1 = "Rainfall  " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall " 312.aez#c.v01_rf5_x1 = ///
+						"TW/SA X Rainfall " 313.aez#c.v01_rf5_x1 = ///
+						"TW/SH X Rainfall " 314.aez#c.v01_rf5_x1 = ///
+						"TW/H X Rainfall " 322.aez#c.v01_rf5_x1 = ///
+						"TC/SA X Rainfall " 323.aez#c.v01_rf5_x1 = ///
+						"TC/SH X Rainfall " 324.aez#c.v01_rf5_x1 = ///
+						"TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf6_x1_c5 v01_rf6_x1_c5_aez, drop(_cons) ///
+						rename(v01_rf6_x1 = "  Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall   " 312.aez#c.v01_rf6_x1 = ///
+						"  TW/SA X Rainfall   " 313.aez#c.v01_rf6_x1 = ///
+						"  TW/SH X Rainfall   " 314.aez#c.v01_rf6_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf6_x1 = ///
+						"  TC/SA X Rainfall   " 323.aez#c.v01_rf6_x1 = ///
+						"  TC/SH X Rainfall   " 324.aez#c.v01_rf6_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
 						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
 					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
 						ytitle("Point Estimates and 95% Confidence Intervals") ///
@@ -116,7 +364,143 @@ foreach c of local levels {
 						labsize(vsmall)) legend(off) 
 						
 						
+* tanzania , sat 1
+	coefplot		 (v01_rf1_x1_c6 v01_rf1_x1_c6_aez, drop(_cons) ///
+						rename(v01_rf1_x1 = "Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						" TW/A X Rainfall " 312.aez#c.v01_rf1_x1 = ///
+						" TW/SA X Rainfall " 313.aez#c.v01_rf1_x1 = ///
+						" TW/SH X Rainfall " 314.aez#c.v01_rf1_x1 = ///
+						" TW/H X Rainfall " 322.aez#c.v01_rf1_x1 = ///
+						" TC/SA X Rainfall " 323.aez#c.v01_rf1_x1 = ///
+						" TC/SH X Rainfall " 324.aez#c.v01_rf1_x1 = ///
+						" TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf2_x1_c6 v01_rf2_x1_c6_aez, drop(_cons) ///
+						rename(v01_rf2_x1 = "Rainfall " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall" 312.aez#c.v01_rf2_x1 = ///
+						"TW/SA X Rainfall" 313.aez#c.v01_rf2_x1 = ///
+						"TW/SH X Rainfall" 314.aez#c.v01_rf2_x1 = ///
+						"TW/H X Rainfall" 322.aez#c.v01_rf2_x1 = ///
+						"TC/SA X Rainfall" 323.aez#c.v01_rf2_x1 = ///
+						"TC/SH X Rainfall" 324.aez#c.v01_rf2_x1 = ///
+						"TC/H X Rainfall") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf3_x1_c6 v01_rf3_x1_c6_aez, drop(_cons) ///
+						rename(v01_rf3_x1 = " Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall " 312.aez#c.v01_rf3_x1 = ///
+						"  TW/SA X Rainfall " 313.aez#c.v01_rf3_x1 = ///
+						"  TW/SH X Rainfall " 314.aez#c.v01_rf3_x1 = ///
+						"  TW/H X Rainfall " 322.aez#c.v01_rf3_x1 = ///
+						"  TC/SA X Rainfall " 323.aez#c.v01_rf3_x1 = ///
+						"  TC/SH X Rainfall " 324.aez#c.v01_rf3_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf4_x1_c6 v01_rf4_x1_c6_aez, drop(_cons) ///
+						rename(v01_rf4_x1 = " Rainfall " 311.aez#c.v01_rf4_x1 = ///
+						"  TW/A X Rainfall  " 312.aez#c.v01_rf4_x1 = ///
+						"  TW/SA X Rainfall  " 313.aez#c.v01_rf4_x1 = ///
+						"  TW/SH X Rainfall  " 314.aez#c.v01_rf4_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf4_x1 = ///
+						"  TC/SA X Rainfall  " 323.aez#c.v01_rf4_x1 = ///
+						"  TC/SH X Rainfall  " 324.aez#c.v01_rf4_x1 = ///
+						"  TC/H X Rainfall  ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf5_x1_c6 v01_rf5_x1_c6_aez, drop(_cons) ///
+						rename(v01_rf5_x1 = "Rainfall  " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall " 312.aez#c.v01_rf5_x1 = ///
+						"TW/SA X Rainfall " 313.aez#c.v01_rf5_x1 = ///
+						"TW/SH X Rainfall " 314.aez#c.v01_rf5_x1 = ///
+						"TW/H X Rainfall " 322.aez#c.v01_rf5_x1 = ///
+						"TC/SA X Rainfall " 323.aez#c.v01_rf5_x1 = ///
+						"TC/SH X Rainfall " 324.aez#c.v01_rf5_x1 = ///
+						"TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf6_x1_c6 v01_rf6_x1_c6_aez, drop(_cons) ///
+						rename(v01_rf6_x1 = "  Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall   " 312.aez#c.v01_rf6_x1 = ///
+						"  TW/SA X Rainfall   " 313.aez#c.v01_rf6_x1 = ///
+						"  TW/SH X Rainfall   " 314.aez#c.v01_rf6_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf6_x1 = ///
+						"  TC/SA X Rainfall   " 323.aez#c.v01_rf6_x1 = ///
+						"  TC/SH X Rainfall   " 324.aez#c.v01_rf6_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
+					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
+						ytitle("Point Estimates and 95% Confidence Intervals") ///
+						groups("Rainfall" = "{bf:CHIRPS}" "Rainfall " ///
+						= "{bf:CPC}" " Rainfall" = "{bf:MERRA-2}" " Rainfall " ///
+						= "{bf:ARC2}" "Rainfall  " = "{bf:ERA-5}" "  Rainfall" ///
+						= "{bf:TAMSAT}" ) vertical xlabel( , angle(45) ///
+						labsize(vsmall)) legend(off) 
 						
+* uganda , sat 1
+	coefplot		 (v01_rf1_x1_c7 v01_rf1_x1_c7_aez, drop(_cons) ///
+						rename(v01_rf1_x1 = "Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						" TW/A X Rainfall " 312.aez#c.v01_rf1_x1 = ///
+						" TW/SA X Rainfall " 313.aez#c.v01_rf1_x1 = ///
+						" TW/SH X Rainfall " 314.aez#c.v01_rf1_x1 = ///
+						" TW/H X Rainfall " 322.aez#c.v01_rf1_x1 = ///
+						" TC/SA X Rainfall " 323.aez#c.v01_rf1_x1 = ///
+						" TC/SH X Rainfall " 324.aez#c.v01_rf1_x1 = ///
+						" TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf2_x1_c7 v01_rf2_x1_c7_aez, drop(_cons) ///
+						rename(v01_rf2_x1 = "Rainfall " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall" 312.aez#c.v01_rf2_x1 = ///
+						"TW/SA X Rainfall" 313.aez#c.v01_rf2_x1 = ///
+						"TW/SH X Rainfall" 314.aez#c.v01_rf2_x1 = ///
+						"TW/H X Rainfall" 322.aez#c.v01_rf2_x1 = ///
+						"TC/SA X Rainfall" 323.aez#c.v01_rf2_x1 = ///
+						"TC/SH X Rainfall" 324.aez#c.v01_rf2_x1 = ///
+						"TC/H X Rainfall") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf3_x1_c7 v01_rf3_x1_c7_aez, drop(_cons) ///
+						rename(v01_rf3_x1 = " Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall " 312.aez#c.v01_rf3_x1 = ///
+						"  TW/SA X Rainfall " 313.aez#c.v01_rf3_x1 = ///
+						"  TW/SH X Rainfall " 314.aez#c.v01_rf3_x1 = ///
+						"  TW/H X Rainfall " 322.aez#c.v01_rf3_x1 = ///
+						"  TC/SA X Rainfall " 323.aez#c.v01_rf3_x1 = ///
+						"  TC/SH X Rainfall " 324.aez#c.v01_rf3_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf4_x1_c7 v01_rf4_x1_c7_aez, drop(_cons) ///
+						rename(v01_rf4_x1 = " Rainfall " 311.aez#c.v01_rf4_x1 = ///
+						"  TW/A X Rainfall  " 312.aez#c.v01_rf4_x1 = ///
+						"  TW/SA X Rainfall  " 313.aez#c.v01_rf4_x1 = ///
+						"  TW/SH X Rainfall  " 314.aez#c.v01_rf4_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf4_x1 = ///
+						"  TC/SA X Rainfall  " 323.aez#c.v01_rf4_x1 = ///
+						"  TC/SH X Rainfall  " 324.aez#c.v01_rf4_x1 = ///
+						"  TC/H X Rainfall  ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf5_x1_c7 v01_rf5_x1_c7_aez, drop(_cons) ///
+						rename(v01_rf5_x1 = "Rainfall  " 311.aez#c.v01_rf2_x1 = ///
+						"TW/A X Rainfall " 312.aez#c.v01_rf5_x1 = ///
+						"TW/SA X Rainfall " 313.aez#c.v01_rf5_x1 = ///
+						"TW/SH X Rainfall " 314.aez#c.v01_rf5_x1 = ///
+						"TW/H X Rainfall " 322.aez#c.v01_rf5_x1 = ///
+						"TC/SA X Rainfall " 323.aez#c.v01_rf5_x1 = ///
+						"TC/SH X Rainfall " 324.aez#c.v01_rf5_x1 = ///
+						"TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ) ///
+					 (v01_rf6_x1_c7 v01_rf6_x1_c7_aez, drop(_cons) ///
+						rename(v01_rf6_x1 = "  Rainfall" 311.aez#c.v01_rf1_x1 = ///
+						"  TW/A X Rainfall   " 312.aez#c.v01_rf6_x1 = ///
+						"  TW/SA X Rainfall   " 313.aez#c.v01_rf6_x1 = ///
+						"  TW/SH X Rainfall   " 314.aez#c.v01_rf6_x1 = ///
+						"  TW/H X Rainfall  " 322.aez#c.v01_rf6_x1 = ///
+						"  TC/SA X Rainfall   " 323.aez#c.v01_rf6_x1 = ///
+						"  TC/SH X Rainfall   " 324.aez#c.v01_rf6_x1 = ///
+						"  TC/H X Rainfall ") msymbol(D) ///
+						mcolor(gs8) mfcolor(white) ciopts(color(edkblue)) ), ///
+					yline(0, lcolor(maroon)) levels(95) ciopts(lwidth(*3) lcolor(*3) ) ///
+						ytitle("Point Estimates and 95% Confidence Intervals") ///
+						groups("Rainfall" = "{bf:CHIRPS}" "Rainfall " ///
+						= "{bf:CPC}" " Rainfall" = "{bf:MERRA-2}" " Rainfall " ///
+						= "{bf:ARC2}" "Rainfall  " = "{bf:ERA-5}" "  Rainfall" ///
+						= "{bf:TAMSAT}" ) vertical xlabel( , angle(45) ///
+						labsize(vsmall)) legend(off) 
 						
 						xline(0, lcolor(maroon) lstyle(solid)) levels(95))
 				
