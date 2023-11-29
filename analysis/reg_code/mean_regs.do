@@ -1933,6 +1933,7 @@ foreach c of local levels {
 						labsize(vsmall)) legend(off) title("Uganda")
 */
 
+/*
 	
 clear all
 
@@ -2414,7 +2415,7 @@ foreach c of local levels {
 	
 	
 	
-	
+*practice	
 /*	
 	xline(0, lcolor(maroon) lstyle(solid)) levels(95))
 				
